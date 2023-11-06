@@ -5,6 +5,7 @@ const questionsListObj = {
     q2:"Which of the following is NOT a fighting-game character archetype?"
 }
 
+
 //answers added as nested obj
 const answersListObj = {
     q1: {
@@ -31,9 +32,25 @@ document.addEventListener("click", function(event){
 const quiz = () => {
     let questions = document.getElementById("questions");
     questions.classList.remove("hide");
+
+    let questionTitle = document.getElementById("questionTitle");
+    let choices = document.getElementById("choices");
+
     
-    for(let i=0; i<questionsListObj; i++) {
-        console.log(`${i}`);
+    let questionsListObjLength = Object.keys(questionsListObj).length;
+
+    let count = 0;
+    let answerKeys = Object.keys(answersListObj);
+    //console.log(answerKeys[count])
+    let qCount = "q" + (count +1)
+    //console.log(qCount)
+    let qTitle = questionsListObj[qCount];
+
+    if (qCount == answerKeys[count]) {
+        questionTitle.textContent = qTitle;
+        //console.log("q is equal to qCount from the obj");
+        
+        console.log(qTitle)
     }
 }
 
