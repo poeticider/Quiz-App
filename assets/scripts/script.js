@@ -24,10 +24,9 @@ const answersListObj = {
 }
 
 
-document.addEventListener("click", function(event){
-	let submit = document.getElementById("submit");
-    quiz();
-});
+
+
+
 
 const quiz = () => {
     let questions = document.getElementById("questions");
@@ -44,13 +43,33 @@ const quiz = () => {
     //console.log(answerKeys[count])
     let qCount = "q" + (count +1)
     //console.log(qCount)
-    let qTitle = questionsListObj[qCount];
+    let qTitleContent = questionsListObj[qCount];
+    let choicesContent = answersListObj[qCount];
+    //console.log(choicesContent)
+
+    let questionsLength = Object.keys(choicesContent).length;
+    console.log(Object.keys(choicesContent).length);
+
+
+
+
 
     if (qCount == answerKeys[count]) {
-        questionTitle.textContent = qTitle;
-        //console.log("q is equal to qCount from the obj");
+        questionTitle.textContent = qTitleContent;
+
+        for (let i=0; i < questionsLength; i++) {
+            //var stores question keys
+            let keys = Object.keys(choicesContent);
+            console.log(keys[i]);
+
+            let newBtn = document.createElement("button");
+            newBtn.textContent = keys[i];
+            choices.appendChild(newBtn);
+            
         
-        console.log(qTitle)
+        }
+        
+        
     }
 }
 
