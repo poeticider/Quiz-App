@@ -29,6 +29,9 @@ const answersListObj = {
 
 
 const quiz = () => {
+    let startBtn = document.getElementById("start");
+    startBtn.classList.add("hide");
+
     let questions = document.getElementById("questions");
     questions.classList.remove("hide");
 
@@ -36,9 +39,11 @@ const quiz = () => {
     let choices = document.getElementById("choices");
 
     
-    let questionsListObjLength = Object.keys(questionsListObj).length;
+
 
     let count = 0;
+    
+
     let answerKeys = Object.keys(answersListObj);
     //console.log(answerKeys[count])
     let qCount = "q" + (count +1)
@@ -48,7 +53,7 @@ const quiz = () => {
     //console.log(choicesContent)
 
     let questionsLength = Object.keys(choicesContent).length;
-    console.log(Object.keys(choicesContent).length);
+    //console.log(Object.keys(choicesContent).length);
 
 
 
@@ -60,16 +65,27 @@ const quiz = () => {
         for (let i=0; i < questionsLength; i++) {
             //var stores question keys
             let keys = Object.keys(choicesContent);
-            console.log(keys[i]);
+            //console.log(keys[i]);
 
             let newBtn = document.createElement("button");
             newBtn.textContent = keys[i];
             choices.appendChild(newBtn);
-            
         
         }
-        
-        
+
+
+        addEventListener('click', function(e) {
+            //event listener target #choices children buttons only
+            if (e.target.tagName === 'BUTTON' && e.target.parentElement.id === 'choices') {
+                count++
+                console.log(count);
+                
+            }
+        });
+
+    
+    
+
     }
 }
 
