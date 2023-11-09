@@ -144,14 +144,28 @@ const quiz = () => {
         
 
         //score is worked as 20pt per question + half the remaining time as points
-        time = time / 2;
+        time = Math.floor(time / 2);
         score += time;
-        console.log("time:" + time)
-        console.log("score:" + score)
-        console.log(`final score is ${score}`)
+        //console.log("time:" + time)
+        // console.log("score:" + score)
+        // console.log(`final score is ${score}`)
 
         let finalScoreEl = document.getElementById("final-score");
         finalScoreEl.textContent = score;
+
+        let submitEl = document.getElementById("submit");
+
+        //LEVELLING UP MY EVENTLISTENER GAME LET'S GOOOO!
+        addEventListener('click', function(e) {
+            if(e.target.id == "submit") {
+                console.log("target aquired");
+
+                //ADD LOCAL STORAGE LOGIC HERE
+
+                window.location.replace('../highscores.html');
+            }
+
+        })
     }
     
 
