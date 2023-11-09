@@ -72,22 +72,23 @@ const quiz = () => {
     let choices = document.getElementById("choices");
 
     //timer in top left. Will default to 60 sec at start of quiz.
-    let time = document.getElementById("time");
+    let timeEl = document.getElementById("time");
     time = 60;
 
 
     const timeInterval = setInterval(function () {
+        timeEl.textContent = time;
         time--;
         console.log(time)
         
         if (time == 0) {
             clearInterval(timeInterval); //stops interval method
-            timerEl.textContent = ''; //removes element
+            time.textContent = ''; //removes element
     
     
         }
     
-    },1000);
+    }, 1000);
 
 
 
