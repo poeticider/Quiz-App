@@ -137,9 +137,11 @@ const quiz = () => {
         clearInterval(timeInterval);
         //hides questions + answers
         questions.classList.add("hide");
-
+        //displays endScreen
         let endScreenEl = document.getElementById("end-screen");
         endScreenEl.classList.remove("hide");
+
+        
 
         //score is worked as 20pt per question + half the remaining time as points
         time = time / 2;
@@ -147,6 +149,9 @@ const quiz = () => {
         console.log("time:" + time)
         console.log("score:" + score)
         console.log(`final score is ${score}`)
+
+        let finalScoreEl = document.getElementById("final-score");
+        finalScoreEl.textContent = score;
     }
     
 
