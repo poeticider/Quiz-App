@@ -54,6 +54,11 @@ const answersListObj = {
 }
 
 
+//-------------------------------------------ON LOAD LOCAL STORAGE-----------------------------------------------
+
+   
+
+
 //------------------------------------------------LOGIC-----------------------------------------------
 
 
@@ -155,20 +160,37 @@ const quiz = () => {
 
         let submitEl = document.getElementById("submit");
 
-        //LEVELLING UP MY EVENTLISTENER GAME LET'S GOOOO!
+        //LEVELLING UP MY EVENTLISTENER GAME. LET'S GOOOO!
         addEventListener('click', function(e) {
             if(e.target.id == "submit") {
                 console.log("target aquired");
 
                 //ADD LOCAL STORAGE LOGIC HERE
+                let initialsEl = document.getElementById("initials");
 
-                window.location.replace('../highscores.html');
+                if(initialsEl.value == "") {
+                    this.alert("Error: please enter your name.");
+
+                } else {
+                    
+                    localStorage.setItem(initialsEl.value, score);
+                    console.log(initialsEl.value)
+                    window.location.replace('../highscores.html');
+
+                    // this.localStorage.getItem(savedInitials)
+                    // let newLi = this.document.createElement("li");
+
+                    // newLi.textContent = savedInitials;
+
+                    // let highscoresEl = this.document.getElementById("highscores").appendChild("newLi");
+                    
+                }
+                
             }
 
-        })
+        });
     }
     
-
 
 
 //--------------------------------ANSWER BTNS EVENT LISTENER LOGIC---------------------------------------
