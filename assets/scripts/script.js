@@ -73,17 +73,18 @@ const quiz = () => {
 
     //timer in top left. Will default to 60 sec at start of quiz.
     let timeEl = document.getElementById("time");
-    time = 60;
+    time = 10;
 
 
     const timeInterval = setInterval(function () {
-        timeEl.textContent = time;
         time--;
+        timeEl.textContent = time;
         console.log(time)
         
         if (time == 0) {
             clearInterval(timeInterval); //stops interval method
-            time.textContent = ''; //removes element
+            timeEl.textContent = 0; 
+            endQuiz();
     
     
         }
@@ -125,6 +126,11 @@ const quiz = () => {
     //initial function call for first set of questions
     nextQuestion();
 
+    const endQuiz = () => {
+        console.log("Quiz completed logic goes here");
+    }
+    
+
 
     addEventListener('click', function(e) {
         //event listener target #choices children buttons only
@@ -148,7 +154,7 @@ const quiz = () => {
 
             } else {
                 //once count reaches answerKeys length, quiz will end
-                console.log("Quiz completed logic goes here");
+                endQuiz();
                 //this block should also trigger if time reaches zero
             }
 
