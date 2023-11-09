@@ -132,6 +132,13 @@ const quiz = () => {
     const endQuiz = () => {
         console.log("Quiz completed logic goes here");
         clearInterval(timeInterval);
+
+        //score is worked as 20pt per question + half the remaining time as points
+        time = time / 2;
+        score += time;
+        console.log("time:" + time)
+        console.log("score:" + score)
+        console.log(`final score is ${score}`)
     }
     
 
@@ -149,8 +156,8 @@ const quiz = () => {
 
             //if answer is correct 10 points is added to score
             if (choicesContent[clickedAnswer] == true) {
-                score += 10;
-                console.log(score)
+                score += 20;
+
             //if answer is incorrect 5 seconds is deducted from time remaining
             } else if (choicesContent[clickedAnswer] == false) {
                 time -=5;
