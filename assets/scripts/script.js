@@ -4,12 +4,19 @@
 const questionsListObj = {
     q1:"Which of the following is NOT a sub-genre of fighting games?",
 
-    q2:"Which of the following is NOT a fighting-game character archetype?"
+    q2:"Which of the following is NOT a fighting-game character archetype?",
+
+    q3:"Which of the following is NOT a fighting-game?",
+
+    q4:"Which of the following properties are NOT associated with a DP ('Dragon Punch')?",
+
+    q5:"In Street Fighter, what is meant by a 'Shoto'?"
 }
 
 
 //answers added as nested obj
 const answersListObj = {
+
     q1: {
         goreFighters: true,
         animeFighters: false,
@@ -22,6 +29,27 @@ const answersListObj = {
         gunner: true,
         puppet: false,
         trap: false
+    },
+
+    q3: {
+        meltyBlood: false,
+        bloodyRoar: false,
+        happyChaos: true,
+        footsies: false
+    },
+
+    q4: {
+        overhead: true,
+        invicibilityFrames: false,
+        antiAir_invicibility: false,
+        launcher: false,
+    },
+
+    q5: {
+        character_playstyles_similar_to_Zangief: false,
+        character_playstyles_similar_to_Dhalsim: false,
+        character_playstyles_similar_to_Guile: false,
+        character_playstyles_similar_to_Ryu: true
     }
 }
 
