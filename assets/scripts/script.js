@@ -71,6 +71,9 @@ const quiz = () => {
     let questionTitle = document.getElementById("questionTitle");
     let choices = document.getElementById("choices");
 
+    //total player score.
+    score = 0
+
     //timer in top left. Will default to 60 sec at start of quiz.
     let timeEl = document.getElementById("time");
     time = 60;
@@ -128,6 +131,7 @@ const quiz = () => {
     //end of quiz logic. To be used in timer + event listener for answer buttons
     const endQuiz = () => {
         console.log("Quiz completed logic goes here");
+        clearInterval(timeInterval);
     }
     
 
@@ -138,11 +142,24 @@ const quiz = () => {
             //when a button is clicked, the count increments
             count++
 
+            //stores target button as var
+            let clickedAnswer = e.target.textContent;
+            //as choicesContent displays nested objects this can be used with clickedAnswer to check values
+            console.log(choicesContent[clickedAnswer])
+
+            //if answer is correct 10 points is added to score
+            if (choicesContent[clickedAnswer] == true) {
+                score += 10;
+                console.log(score)
             //if answer is incorrect 5 seconds is deducted from time remaining
-            if(e.target.value == false) {
+            } else if (choicesContent[clickedAnswer] == false) {
                 time -=5;
             }
-
+            
+            
+                
+            
+            
             //converts object into array of keys. this is done because .length will return undefined on an object
             let answerKeys = Object.keys(answersListObj);
 
