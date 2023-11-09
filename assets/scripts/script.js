@@ -73,13 +73,13 @@ const quiz = () => {
 
     //timer in top left. Will default to 60 sec at start of quiz.
     let timeEl = document.getElementById("time");
-    time = 10;
+    time = 60;
 
 
     const timeInterval = setInterval(function () {
         time--;
         timeEl.textContent = time;
-        console.log(time)
+        //console.log(time)
         
         if (time == 0) {
             clearInterval(timeInterval); //stops interval method
@@ -103,7 +103,6 @@ const quiz = () => {
     //console.log(choicesContent)
 
     let questionsLength = Object.keys(choicesContent).length;
-    console.log(Object.keys(choicesContent).length);
     
     //function to manipulate the dom to create a new set of question buttons. 
     //The nested objected is chosen based on the key (ie q1)
@@ -126,6 +125,7 @@ const quiz = () => {
     //initial function call for first set of questions
     nextQuestion();
 
+    //end of quiz logic. To be used in timer + event listener for answer buttons
     const endQuiz = () => {
         console.log("Quiz completed logic goes here");
     }
@@ -137,6 +137,11 @@ const quiz = () => {
         if (e.target.tagName === 'BUTTON' && e.target.parentElement.id === 'choices') {
             //when a button is clicked, the count increments
             count++
+
+            //if answer is incorrect 5 seconds is deducted from time remaining
+            if(e.target.value == false) {
+                time -=5;
+            }
 
             //converts object into array of keys. this is done because .length will return undefined on an object
             let answerKeys = Object.keys(answersListObj);
