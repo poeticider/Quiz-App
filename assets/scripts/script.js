@@ -105,8 +105,9 @@ const quiz = () => {
     let choicesContent = answersListObj[qCount];
     //console.log(choicesContent)
 
-    let questionsLength = Object.keys(choicesContent).length;
-    
+//---------------------------------------NEXT QUESTION HTML LOGIC------------------------------------------------------------------
+
+    let questionsLength = Object.keys(choicesContent).length;    
     //function to manipulate the dom to create a new set of question buttons. 
     //The nested objected is chosen based on the key (ie q1)
     const nextQuestion = () => {
@@ -128,10 +129,17 @@ const quiz = () => {
     //initial function call for first set of questions
     nextQuestion();
 
+//---------------------------------------END QUIZ LOGIC-------------------------------------------------
+
     //end of quiz logic. To be used in timer + event listener for answer buttons
     const endQuiz = () => {
-        console.log("Quiz completed logic goes here");
+        //freezes timer
         clearInterval(timeInterval);
+        //hides questions + answers
+        questions.classList.add("hide");
+
+        let endScreenEl = document.getElementById("end-screen");
+        endScreenEl.classList.remove("hide");
 
         //score is worked as 20pt per question + half the remaining time as points
         time = time / 2;
@@ -142,6 +150,9 @@ const quiz = () => {
     }
     
 
+
+
+//--------------------------------ANSWER BTNS EVENT LISTENER LOGIC---------------------------------------
 
     addEventListener('click', function(e) {
         //event listener target #choices children buttons only
