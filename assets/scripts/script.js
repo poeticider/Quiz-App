@@ -59,20 +59,40 @@ const answersListObj = {
 
 
 const quiz = () => {
-
+    //removes start button at start of quiz
     let startBtn = document.getElementById("start");
     startBtn.classList.add("hide");
 
+    //displays questions div at start of quiz
     let questions = document.getElementById("questions");
     questions.classList.remove("hide");
 
+    //question and answer parents used for appending quiz objects
     let questionTitle = document.getElementById("questionTitle");
     let choices = document.getElementById("choices");
 
+    //timer in top left. Will default to 60 sec at start of quiz.
+    let time = document.getElementById("time");
+    time = 60;
+
+
+    const timeInterval = setInterval(function () {
+        time--;
+        console.log(time)
+        
+        if (time == 0) {
+            clearInterval(timeInterval); //stops interval method
+            timerEl.textContent = ''; //removes element
+    
+    
+        }
+    
+    },1000);
+
+
+
     //count used to cycle through nested object questions
     let count = 0;
-    
-    
 
     let qCount = "q" + (count +1)
     //console.log(qCount)
@@ -128,6 +148,7 @@ const quiz = () => {
             } else {
                 //once count reaches answerKeys length, quiz will end
                 console.log("Quiz completed logic goes here");
+                //this block should also trigger if time reaches zero
             }
 
         }
